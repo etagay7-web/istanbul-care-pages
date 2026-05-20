@@ -1,179 +1,142 @@
+'use client';
+
 import Link from 'next/link';
-import type { Metadata } from 'next';
+import { useState, useMemo } from 'react';
 import PageHero from '@/components/PageHero';
 
-export const metadata: Metadata = {
-  title: 'Blog | Istanbul Care Hair Clinic',
-  description:
-    'Guides, research and aftercare tips from the medical team at Istanbul Care Hair Clinic.'
+type Category = 'Hair Transplant' | 'Aftercare' | 'Research' | 'Celebrities' | 'Cost & Pricing';
+
+type Post = {
+  slug: string;
+  title: string;
+  category: Category;
+  date: string;
+  readingTime: number;
+  img: string;
+  excerpt?: string;
 };
 
-const categories = ['All', 'Hair Transplant', 'Aftercare', 'Research', 'Celebrities', 'Cost & Pricing'];
+type Author = {
+  slug: string;
+  name: string;
+  initials: string;
+  title: string;
+  bio: string;
+  tags: string[];
+  accent: 'primary' | 'secondary' | 'accent' | 'primaryDark';
+  posts: Post[];
+};
 
-const posts = [
-  {
-    slug: 'bald-mans-guide-to-modern-hair-restoration',
-    title: "Bald Man's Guide to Modern Hair Restoration",
-    excerpt:
-      'A complete look at the modern restoration options for men experiencing significant hair loss.',
-    date: '2026-05-12',
-    readingTime: 9,
-    category: 'Hair Transplant',
-    img: 'https://picsum.photos/seed/blog1/800/520',
-    featured: true,
-    author: 'Dr. Asil B.'
-  },
-  {
-    slug: 'tristan-tate-hairline',
-    title: 'Tristan Tate Hairline: Recession, Density and Transplant Questions',
-    excerpt:
-      'We analyse Tristan Tate’s hairline evolution and what techniques he likely used.',
-    date: '2026-05-02',
-    readingTime: 7,
-    category: 'Celebrities',
-    img: 'https://picsum.photos/seed/blog2/800/520',
-    author: 'Dr. Merve S.'
-  },
-  {
-    slug: 'bald-people-causes-myths-restoration',
-    title: 'Bald People: Causes, Myths and Restoration Options',
-    excerpt:
-      'Separating common myths from medical reality and exploring restoration paths.',
-    date: '2026-04-21',
-    readingTime: 8,
-    category: 'Research',
-    img: 'https://picsum.photos/seed/blog3/800/520',
-    author: 'Uzm. Dr. Tuğba H.'
-  },
-  {
-    slug: 'jeremy-pivens-hairline',
-    title: "Jeremy Piven's Hairline: Transplant or Hairpiece?",
-    excerpt:
-      'A closer look at the photographic evidence of Jeremy Piven’s hairline over the years.',
-    date: '2026-04-10',
-    readingTime: 6,
-    category: 'Celebrities',
-    img: 'https://picsum.photos/seed/blog4/800/520',
-    author: 'Dr. Ayşenur K.'
-  },
-  {
-    slug: 'trichotillomania-restoration',
-    title: 'Trichotillomania and Hair Restoration: What Are My Options?',
-    excerpt:
-      'Restoration options for people living with trichotillomania, with surgeon guidance.',
-    date: '2026-03-28',
-    readingTime: 7,
-    category: 'Research',
-    img: 'https://picsum.photos/seed/blog5/800/520',
-    author: 'Uzm. Dr. Tuğba H.'
-  },
-  {
-    slug: 'mustard-oil-hair-benefits',
-    title: 'Mustard Oil and Hair: What the Evidence Says',
-    excerpt:
-      'Is mustard oil actually good for your hair? We look at the research and clinical experience.',
-    date: '2026-03-15',
-    readingTime: 5,
-    category: 'Aftercare',
-    img: 'https://picsum.photos/seed/blog6/800/520',
-    author: 'Dr. Ayşenur K.'
-  },
-  {
-    slug: 'bump-on-scalp-treatment',
-    title: 'Bump on Scalp: How to Identify and Treat It',
-    excerpt:
-      'When to worry about scalp bumps and when they are just a routine concern.',
-    date: '2026-03-04',
-    readingTime: 6,
-    category: 'Aftercare',
-    img: 'https://picsum.photos/seed/blog7/800/520',
-    author: 'Dr. Merve S.'
-  },
-  {
-    slug: 'can-hair-mold-cause-hair-loss',
-    title: 'Can Hair Mold Cause Hair Loss?',
-    excerpt:
-      'Exploring the surprising link between damp environments, hair mold and hair loss.',
-    date: '2026-02-22',
-    readingTime: 5,
-    category: 'Research',
-    img: 'https://picsum.photos/seed/blog8/800/520',
-    author: 'Dr. Asil B.'
-  },
-  {
-    slug: 'fue-cost-turkey',
-    title: 'What Is the Average Cost of FUE Hair Transplant in Turkey?',
-    excerpt:
-      'Real prices, what’s included in packages, and how to avoid hidden costs.',
-    date: '2026-02-10',
-    readingTime: 7,
-    category: 'Cost & Pricing',
-    img: 'https://picsum.photos/seed/blog9/800/520',
-    author: 'Dr. Asil B.'
-  }
-];
+const slugify = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 
-const authors = [
+const mk = (title: string, category: Category, date: string, readingTime = 6): Post => ({
+  slug: slugify(title),
+  title,
+  category,
+  date,
+  readingTime,
+  img: `https://picsum.photos/seed/${slugify(title)}/800/520`,
+  excerpt:
+    'A clear, surgeon-reviewed read from the Istanbul Care editorial team — practical guidance you can trust.'
+});
+
+const authors: Author[] = [
   {
     slug: 'dr-asil-b',
     name: 'Dr. Asil B.',
-    role: 'Hair Restoration Surgeon · Lead Editor',
-    img: 'https://picsum.photos/seed/dr-asil/200/200',
-    bio: 'Board-certified hair restoration surgeon with over 12 years of experience in FUE and DHI procedures. Leads the editorial team for hair transplant content.',
-    credentials: [
-      'MD, Istanbul University Faculty of Medicine',
-      'ISHRS Member',
-      '12+ years in hair restoration',
-      '8,000+ procedures performed'
-    ],
-    topics: ['Hair Transplant', 'Cost & Pricing', 'Patient Selection']
+    initials: 'AB',
+    title: 'Hair Transplant Specialist & Trichologist',
+    bio: 'Board-certified hair restoration surgeon with deep expertise in FUE, DHI and beard transplantation. Leads the editorial team for hair transplant content.',
+    tags: ['FUE', 'DHI', 'Trichology', 'Beard'],
+    accent: 'primary',
+    posts: [
+      mk("Bald Man's Guide to Modern Hair Restoration", 'Hair Transplant', '2026-05-12', 9),
+      mk('Blonde Hair Transplant in Turkey', 'Hair Transplant', '2026-05-15', 7),
+      mk('Joel McHale Hairline Analysis', 'Celebrities', '2026-05-04', 6),
+      mk('Creatine and Hair Loss', 'Research', '2026-04-30', 8),
+      mk("Sapphire FUE: A Surgeon's Honest Guide", 'Hair Transplant', '2026-04-29', 10),
+      mk('Hair Transplant Aftercare: Week by Week', 'Aftercare', '2026-04-20', 7)
+    ]
   },
   {
     slug: 'dr-aysenur-k',
     name: 'Dr. Ayşenur K.',
-    role: 'Dermatologist · Aftercare Specialist',
-    img: 'https://picsum.photos/seed/dr-aysenur/200/200',
-    bio: 'Dermatologist specialised in post-operative scalp care, female pattern hair loss and non-surgical treatments such as PRP and mesotherapy.',
-    credentials: [
-      'MD, Hacettepe University',
-      'European Society of Dermatology member',
-      'Female hair loss specialist',
-      'Lecturer at international congresses'
-    ],
-    topics: ['Aftercare', 'Female Hair Loss', 'PRP & Mesotherapy']
+    initials: 'AK',
+    title: 'Hair Transplant Specialist',
+    bio: 'Specialist focused on natural hairline design and a calm, patient-first counselling style. Reviews aftercare content across the blog.',
+    tags: ['FUE', 'DHI', 'Natural Hairline', 'Patient Care'],
+    accent: 'secondary',
+    posts: [
+      mk('Natural Hairline Design Principles', 'Hair Transplant', '2026-05-10', 7),
+      mk('DHI vs FUE: Which Is Right for You?', 'Hair Transplant', '2026-04-25', 8),
+      mk('Female Hair Loss Patterns Explained', 'Research', '2026-04-15', 6),
+      mk('What to Expect on Surgery Day', 'Aftercare', '2026-04-08', 5)
+    ]
   },
   {
     slug: 'dr-merve-s',
     name: 'Dr. Merve S.',
-    role: 'Hair Transplant Surgeon · Patient Counsellor',
-    img: 'https://picsum.photos/seed/dr-merve/200/200',
-    bio: 'Hair transplant surgeon with a deep focus on hairline design, beard and eyebrow transplantation. Known for patient-first counselling style.',
-    credentials: [
-      'MD, Ege University Faculty of Medicine',
-      'Specialty in hairline aesthetics',
-      'Author of multiple peer-reviewed papers',
-      '5,000+ procedures performed'
-    ],
-    topics: ['Hairline Design', 'Beard & Eyebrow', 'Celebrities & Trends']
+    initials: 'MS',
+    title: 'Hair Transplant Specialist',
+    bio: 'Surgeon specialising in crown restoration and minimally invasive techniques. Writes deep dives on the science behind density and graft survival.',
+    tags: ['FUE', 'DHI', 'Minimally Invasive', 'Crown'],
+    accent: 'accent',
+    posts: [
+      mk('Crown Restoration: Challenges and Solutions', 'Hair Transplant', '2026-05-08', 9),
+      mk('Minimally Invasive Techniques in 2026', 'Hair Transplant', '2026-04-22', 7),
+      mk('Post-Op Pain Management Guide', 'Aftercare', '2026-04-12', 6),
+      mk('Hair Density: What the Numbers Mean', 'Research', '2026-03-30', 7)
+    ]
   },
   {
     slug: 'uzm-dr-tugba-h',
     name: 'Uzm. Dr. Tuğba H.',
-    role: 'Specialist Physician · Research Lead',
-    img: 'https://picsum.photos/seed/dr-tugba/200/200',
-    bio: 'Specialist physician overseeing the research desk at Istanbul Care. Reviews the literature behind every article and ensures medical accuracy.',
-    credentials: [
-      'Uzmanlık (Specialty) – Istanbul University',
-      'Research focus: hair loss epidemiology',
-      'Editorial board member, internal journal',
-      '10+ years in clinical research'
-    ],
-    topics: ['Research', 'Evidence Reviews', 'Special Conditions']
+    initials: 'TH',
+    title: 'Hair Transplant Specialist',
+    bio: 'Specialist physician leading our female hair loss and hairline restoration programmes. Reviews the literature behind every research article.',
+    tags: ['Female Hair Loss', 'Hairline Restoration'],
+    accent: 'primaryDark',
+    posts: [
+      mk('Women and Hair Transplants: The Complete Guide', 'Hair Transplant', '2026-05-14', 10),
+      mk('Hairline Restoration for Women', 'Hair Transplant', '2026-05-05', 8),
+      mk('Trichology Basics Every Patient Should Know', 'Research', '2026-04-18', 7),
+      mk('Cost of Hair Transplant in Turkey 2026', 'Cost & Pricing', '2026-04-10', 6),
+      mk('Tristan Tate Hairline Analysis', 'Celebrities', '2026-05-12', 5)
+    ]
   }
 ];
 
-const featured = posts.find((p) => p.featured) ?? posts[0];
-const rest = posts.filter((p) => p !== featured);
+const allPosts: (Post & { author: Author })[] = authors.flatMap((a) =>
+  a.posts.map((p) => ({ ...p, author: a }))
+);
+
+const categories: ('All' | Category)[] = [
+  'All',
+  'Hair Transplant',
+  'Aftercare',
+  'Research',
+  'Celebrities',
+  'Cost & Pricing'
+];
+
+const categoryStyle: Record<Category, string> = {
+  'Hair Transplant': 'bg-primary text-white',
+  Aftercare: 'bg-accent text-white',
+  Research: 'bg-secondary text-white',
+  Celebrities: 'bg-primary-dark text-white',
+  'Cost & Pricing': 'bg-accent-strong text-white'
+};
+
+const accentBg: Record<Author['accent'], string> = {
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
+  accent: 'bg-accent',
+  primaryDark: 'bg-primary-dark'
+};
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', {
@@ -183,6 +146,15 @@ const formatDate = (iso: string) =>
   });
 
 export default function BlogPage() {
+  const [openAuthor, setOpenAuthor] = useState<string | null>(authors[0].slug);
+  const [activeCategory, setActiveCategory] = useState<'All' | Category>('All');
+
+  const filteredPosts = useMemo(() => {
+    const sorted = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
+    if (activeCategory === 'All') return sorted;
+    return sorted.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
   return (
     <>
       <PageHero
@@ -191,185 +163,247 @@ export default function BlogPage() {
         subtitle="In-depth guides, research and aftercare tips written by our medical team and contributing experts."
       />
 
-      <section className="max-w-8xl mx-auto px-4 lg:px-12 py-12">
-        <div className="flex flex-wrap gap-2 mb-10">
-          {categories.map((c, i) => (
-            <button
-              key={c}
-              className={
-                'rounded-full px-4 py-2 text-sm font-medium transition-colors ' +
-                (i === 0
-                  ? 'bg-primary text-white'
-                  : 'bg-primary/5 text-primary hover:bg-secondary hover:text-white')
-              }
-            >
-              {c}
-            </button>
-          ))}
+      {/* SECTION 2 — OUR AUTHORS (above articles) */}
+      <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
+        <div className="mb-10 max-w-3xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+            Editorial team
+          </span>
+          <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
+            Our Authors
+          </h2>
+          <p className="mt-4 text-primary/75 leading-relaxed">
+            Every article is written, reviewed or supervised by a member of our medical team. Tap an
+            author to see their work and areas of expertise.
+          </p>
         </div>
 
-        <Link
-          href={`/tools/blog/${featured.slug}`}
-          className="group block rounded-2xl overflow-hidden border border-soft/40 hover:shadow-xl transition-shadow"
-        >
-          <div className="grid md:grid-cols-2">
-            <div className="relative aspect-[16/10] md:aspect-auto overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={featured.img}
-                alt={featured.title}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <span className="absolute top-4 left-4 rounded-full bg-accent text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1">
-                Featured
-              </span>
-            </div>
-            <div className="p-8 md:p-10 flex flex-col justify-center">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-secondary font-semibold">
-                <span>{featured.category}</span>
-                <span className="h-1 w-1 rounded-full bg-soft" />
-                <time>{formatDate(featured.date)}</time>
-                <span className="h-1 w-1 rounded-full bg-soft" />
-                <span>{featured.readingTime} min read</span>
-              </div>
-              <h2 className="mt-3 text-2xl md:text-3xl font-bold text-primary group-hover:text-secondary">
-                {featured.title}
-              </h2>
-              <p className="mt-3 text-primary/75 leading-relaxed">{featured.excerpt}</p>
-              <p className="mt-5 text-xs text-primary/60">By {featured.author}</p>
-              <span className="mt-3 inline-flex items-center text-sm font-semibold text-accent-strong group-hover:text-accent">
-                Read article →
-              </span>
-            </div>
-          </div>
-        </Link>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
-          {rest.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/tools/blog/${post.slug}`}
-              className="group rounded-2xl overflow-hidden bg-white border border-soft/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={post.img}
-                  alt={post.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute top-3 left-3 rounded-full bg-primary/85 text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1">
-                  {post.category}
-                </span>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-3 text-xs text-primary/60">
-                  <time>{formatDate(post.date)}</time>
-                  <span className="h-1 w-1 rounded-full bg-soft" />
-                  <span>{post.readingTime} min read</span>
-                </div>
-                <h3 className="mt-3 text-lg font-semibold text-primary group-hover:text-secondary leading-snug">
-                  {post.title}
-                </h3>
-                <p className="mt-2 text-sm text-primary/75 leading-relaxed line-clamp-3">
-                  {post.excerpt}
-                </p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-xs text-primary/60">By {post.author}</span>
-                  <span className="text-sm font-semibold text-accent-strong group-hover:text-accent">
-                    Read more →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-14 flex justify-center">
-          <button className="rounded-full bg-primary text-white px-6 py-3 text-sm font-semibold hover:bg-primary-dark transition-colors">
-            Load more articles
-          </button>
-        </div>
-      </section>
-
-      <section className="bg-primary/5 border-t border-soft/40">
-        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-              Editorial team
-            </span>
-            <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-              Meet the doctors behind every article
-            </h2>
-            <p className="mt-4 text-primary/75 leading-relaxed">
-              Every piece on the Istanbul Care blog is written, reviewed or supervised by a
-              member of our medical team. Tap a name to see their background, credentials and
-              areas of focus.
-            </p>
-          </div>
-
-          <div className="mt-10 space-y-4">
-            {authors.map((a, i) => (
-              <details
-                key={a.slug}
-                open={i === 0}
-                className="group rounded-2xl bg-white border border-soft/40 overflow-hidden open:shadow-lg transition-shadow"
-              >
-                <summary className="list-none cursor-pointer select-none flex items-center gap-5 p-5 md:p-6 hover:bg-primary/5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={a.img}
-                    alt={a.name}
-                    className="h-14 w-14 md:h-16 md:w-16 rounded-full object-cover ring-2 ring-soft/60"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-primary truncate">{a.name}</h3>
-                    <p className="text-xs md:text-sm text-secondary truncate">{a.role}</p>
-                  </div>
-                  <span
-                    aria-hidden
-                    className="h-9 w-9 inline-flex items-center justify-center rounded-full bg-primary/5 text-primary text-lg transition-transform group-open:rotate-45"
+        <div className="space-y-6">
+          {authors.map((author) => {
+            const isOpen = openAuthor === author.slug;
+            return (
+              <div key={author.slug}>
+                <button
+                  onClick={() => setOpenAuthor(isOpen ? null : author.slug)}
+                  aria-expanded={isOpen}
+                  aria-controls={`panel-${author.slug}`}
+                  className={
+                    'w-full rounded-2xl overflow-hidden bg-white border border-soft/40 grid grid-cols-1 md:grid-cols-[280px_1fr] text-left transition-all ' +
+                    (isOpen ? 'shadow-xl border-secondary' : 'shadow-sm hover:shadow-lg hover:border-secondary/60')
+                  }
+                >
+                  {/* Left: gradient panel with initial + name */}
+                  <div
+                    className={
+                      'relative px-6 py-8 md:py-10 text-white flex flex-col items-center justify-center text-center ' +
+                      accentBg[author.accent]
+                    }
                   >
-                    +
-                  </span>
-                </summary>
+                    <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_top_right,white,transparent_60%)]" />
+                    <div className="relative h-20 w-20 md:h-24 md:w-24 rounded-full bg-white/15 backdrop-blur ring-4 ring-white/20 flex items-center justify-center text-3xl md:text-4xl font-bold">
+                      {author.initials}
+                    </div>
+                    <h3 className="relative mt-4 text-lg md:text-xl font-bold leading-tight">
+                      {author.name}
+                    </h3>
+                    <p className="relative mt-1 text-xs md:text-sm text-white/85">
+                      {author.posts.length} article{author.posts.length === 1 ? '' : 's'}
+                    </p>
+                  </div>
 
-                <div className="border-t border-soft/40 px-5 md:px-6 py-6 grid gap-6 md:grid-cols-3">
-                  <div className="md:col-span-2">
-                    <p className="text-sm text-primary/80 leading-relaxed">{a.bio}</p>
-                    <div className="mt-5">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-secondary mb-2">
-                        Areas of focus
+                  {/* Right: bio + tags + meta */}
+                  <div className="p-6 md:p-8 flex flex-col">
+                    <div className="flex items-start justify-between gap-4">
+                      <p className="text-sm md:text-base font-semibold text-secondary">
+                        {author.title}
+                      </p>
+                      <span
+                        aria-hidden
+                        className={
+                          'h-9 w-9 shrink-0 inline-flex items-center justify-center rounded-full text-lg transition-transform ' +
+                          (isOpen ? 'bg-accent text-white rotate-45' : 'bg-primary/5 text-primary')
+                        }
+                      >
+                        +
+                      </span>
+                    </div>
+                    <p className="mt-3 text-sm text-primary/75 leading-relaxed">{author.bio}</p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {author.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="inline-flex rounded-full bg-secondary/10 text-primary text-xs font-medium px-3 py-1"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <span
+                      className={
+                        'mt-5 text-xs font-semibold uppercase tracking-wider transition-colors ' +
+                        (isOpen ? 'text-accent-strong' : 'text-primary/60')
+                      }
+                    >
+                      {isOpen ? 'Hide articles ↑' : 'View articles ↓'}
+                    </span>
+                  </div>
+                </button>
+
+                {/* Expanded panel */}
+                {isOpen ? (
+                  <div
+                    id={`panel-${author.slug}`}
+                    className="mt-4 rounded-2xl bg-white border border-soft/40 shadow-sm overflow-hidden"
+                  >
+                    <div className="px-6 md:px-8 pt-6">
+                      <h4 className="text-xs font-semibold uppercase tracking-wider text-secondary mb-3">
+                        Service categories
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {a.topics.map((t) => (
+                        {author.tags.map((t) => (
                           <span
                             key={t}
-                            className="inline-flex rounded-full bg-secondary/10 text-primary text-xs font-medium px-3 py-1"
+                            className="inline-flex rounded-full bg-primary text-white text-xs font-semibold px-3 py-1.5 shadow-sm"
                           >
                             {t}
                           </span>
                         ))}
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-secondary mb-3">
-                      Credentials
-                    </h4>
-                    <ul className="space-y-2 text-sm text-primary/80">
-                      {a.credentials.map((c) => (
-                        <li key={c} className="flex gap-2">
-                          <span className="text-accent">✓</span>
-                          <span>{c}</span>
+
+                    <ul className="px-2 md:px-4 py-6">
+                      {author.posts.map((post) => (
+                        <li key={post.slug}>
+                          <Link
+                            href={`/tools/blog/${post.slug}`}
+                            className="group block rounded-xl px-4 md:px-6 py-4 hover:bg-primary/5 transition-colors"
+                          >
+                            <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                              <span
+                                className={
+                                  'inline-flex w-fit rounded-full text-[10px] uppercase tracking-wider font-semibold px-3 py-1 ' +
+                                  categoryStyle[post.category]
+                                }
+                              >
+                                {post.category}
+                              </span>
+                              <h5 className="flex-1 text-base md:text-lg font-semibold text-primary group-hover:text-secondary leading-snug">
+                                {post.title}
+                              </h5>
+                              <div className="flex items-center gap-3 text-xs text-primary/60 whitespace-nowrap">
+                                <time>{formatDate(post.date)}</time>
+                                <span className="h-1 w-1 rounded-full bg-soft" />
+                                <span>{post.readingTime} min</span>
+                                <span className="hidden md:inline text-sm font-semibold text-accent-strong group-hover:text-accent ml-2">
+                                  Read article →
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
                         </li>
                       ))}
                     </ul>
                   </div>
-                </div>
-              </details>
-            ))}
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* SECTION 3 — ALL ARTICLES */}
+      <section className="bg-primary/5 border-t border-soft/40">
+        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
+          <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+                All articles
+              </span>
+              <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
+                Latest from the blog
+              </h2>
+            </div>
+            <span className="text-sm font-semibold text-primary/70">
+              {filteredPosts.length} article{filteredPosts.length === 1 ? '' : 's'}
+              {activeCategory !== 'All' ? ` in ${activeCategory}` : ''}
+            </span>
           </div>
+
+          <div className="flex flex-wrap gap-2 mb-10">
+            {categories.map((c) => {
+              const active = c === activeCategory;
+              return (
+                <button
+                  key={c}
+                  onClick={() => setActiveCategory(c)}
+                  className={
+                    'rounded-full px-4 py-2 text-sm font-medium transition-colors ' +
+                    (active
+                      ? 'bg-primary text-white'
+                      : 'bg-white text-primary border border-soft/40 hover:bg-secondary hover:text-white hover:border-secondary')
+                  }
+                >
+                  {c}
+                </button>
+              );
+            })}
+          </div>
+
+          {filteredPosts.length === 0 ? (
+            <p className="rounded-2xl bg-white border border-soft/40 p-10 text-center text-primary/70">
+              No articles in this category yet — check back soon.
+            </p>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-2">
+              {filteredPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/tools/blog/${post.slug}`}
+                  className="group rounded-2xl overflow-hidden bg-white border border-soft/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
+                >
+                  <div className="grid sm:grid-cols-[200px_1fr]">
+                    <div className="relative aspect-[16/10] sm:aspect-auto sm:min-h-[180px] overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={post.img}
+                        alt={post.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <span
+                        className={
+                          'absolute top-3 left-3 rounded-full text-[10px] font-semibold uppercase tracking-wider px-3 py-1 ' +
+                          categoryStyle[post.category]
+                        }
+                      >
+                        {post.category}
+                      </span>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 text-xs text-primary/60">
+                        <time>{formatDate(post.date)}</time>
+                        <span className="h-1 w-1 rounded-full bg-soft" />
+                        <span>{post.readingTime} min read</span>
+                      </div>
+                      <h3 className="mt-3 text-lg font-semibold text-primary group-hover:text-secondary leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-primary/75 leading-relaxed line-clamp-2">
+                        {post.excerpt}
+                      </p>
+                      <div className="mt-4 flex items-center justify-between text-xs">
+                        <span className="text-primary/60">By {post.author.name}</span>
+                        <span className="text-sm font-semibold text-accent-strong group-hover:text-accent">
+                          Read article →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>
