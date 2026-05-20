@@ -140,7 +140,42 @@ export default function BlogPage() {
         subtitle="In-depth guides, research and aftercare tips written by our medical team and contributing experts."
       />
 
-      <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
+      {/* SECTION 2 — Intro */}
+      <section className="bg-white">
+        <div className="max-w-3xl mx-auto px-4 lg:px-12 py-16 md:py-20 text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
+            Istanbul Care Editorial
+          </span>
+          <h2 className="mt-4 text-2xl md:text-4xl font-bold text-primary leading-tight">
+            Expert-written content you can trust
+          </h2>
+          <p className="mt-5 text-primary/75 leading-relaxed">
+            Every article published on the Istanbul Care blog is written or reviewed by a member of
+            our medical team. Our authors are board-certified surgeons and specialists with years of
+            hands-on experience in hair transplantation. Browse by author below to explore their
+            areas of expertise and read their published content.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {[
+              { label: '19 articles published' },
+              { label: '4 specialist authors' },
+              { label: '5 content categories' }
+            ].map((s) => (
+              <span
+                key={s.label}
+                className="inline-flex items-center gap-2 rounded-full bg-primary/5 text-primary text-sm font-semibold px-4 py-2 border border-soft/40"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                {s.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 — Our Authors */}
+      <section className="max-w-8xl mx-auto px-4 lg:px-12 pb-16">
         <div className="mb-10 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
             Editorial team
@@ -276,6 +311,181 @@ export default function BlogPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* SECTION 4 — Reach Us Now */}
+      <section
+        className="text-white"
+        style={{
+          backgroundImage: 'linear-gradient(90deg, #22c55e 0%, #41758c 100%)'
+        }}
+      >
+        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20 grid gap-12 lg:grid-cols-[1.2fr_1fr] items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
+              <span className="h-1.5 w-1.5 rounded-full bg-white" />
+              Free consultation
+            </span>
+            <h2 className="mt-5 text-3xl md:text-5xl font-bold leading-tight">Reach Us Now</h2>
+            <p className="mt-4 text-white/90 max-w-xl leading-relaxed">
+              Speak with our expert hair transplant specialists. We&apos;re ready to answer your
+              questions.
+            </p>
+
+            <form
+              className="mt-8 grid gap-4 max-w-xl"
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required
+                className="w-full rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white placeholder:text-white/70 focus:outline-none focus:border-white"
+              />
+
+              <div className="flex gap-2">
+                <div className="flex items-center gap-2 rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-3 py-3.5 text-white shrink-0">
+                  <span aria-hidden>🇹🇷</span>
+                  <span className="text-sm font-medium">+90</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="h-4 w-4 opacity-70"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  required
+                  className="flex-1 rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white placeholder:text-white/70 focus:outline-none focus:border-white"
+                />
+              </div>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="w-full rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white placeholder:text-white/70 focus:outline-none focus:border-white"
+              />
+
+              <select
+                name="language"
+                required
+                defaultValue=""
+                className="w-full rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white focus:outline-none focus:border-white appearance-none"
+                style={{
+                  backgroundImage:
+                    'url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'2\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 1rem center',
+                  backgroundSize: '1rem'
+                }}
+              >
+                <option value="" disabled className="text-primary">
+                  Select Language
+                </option>
+                {[
+                  'English',
+                  'German',
+                  'French',
+                  'Spanish',
+                  'Italian',
+                  'Polish',
+                  'Romanian',
+                  'Albanian'
+                ].map((l) => (
+                  <option key={l} value={l} className="text-primary">
+                    {l}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                name="service"
+                required
+                defaultValue=""
+                className="w-full rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white focus:outline-none focus:border-white appearance-none"
+                style={{
+                  backgroundImage:
+                    'url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'2\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'/%3E%3C/svg%3E")',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 1rem center',
+                  backgroundSize: '1rem'
+                }}
+              >
+                <option value="" disabled className="text-primary">
+                  Service Category
+                </option>
+                {[
+                  'Hair Transplant',
+                  'DHI',
+                  'FUE',
+                  'Sapphire FUE',
+                  'Beard Transplant',
+                  'Eyebrow Transplant',
+                  'Woman Hair Transplant'
+                ].map((s) => (
+                  <option key={s} value={s} className="text-primary">
+                    {s}
+                  </option>
+                ))}
+              </select>
+
+              <label className="flex items-start gap-3 text-sm text-white/90 mt-1">
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  required
+                  className="mt-0.5 h-4 w-4 rounded border-white/40 accent-white"
+                />
+                <span>
+                  I have read and accepted the{' '}
+                  <Link href="/privacy-policy" className="underline hover:text-white">
+                    privacy policy
+                  </Link>
+                  .
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                className="mt-2 inline-flex items-center justify-center rounded-xl bg-primary-strong hover:bg-primary-dark transition-colors px-6 py-4 text-base font-semibold text-white shadow-lg"
+              >
+                Send Now
+              </button>
+            </form>
+          </div>
+
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl ring-4 ring-white/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://picsum.photos/seed/doctors/500/600"
+                alt="Istanbul Care medical team"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-strong/40 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <p className="text-xs font-semibold uppercase tracking-wider opacity-90">
+                  Medical Team
+                </p>
+                <p className="mt-1 text-lg font-bold drop-shadow">
+                  Board-certified specialists, ready to help
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
