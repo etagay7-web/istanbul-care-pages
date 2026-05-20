@@ -8,7 +8,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/', destination: '/tools', permanent: false },
       { source: '/tools/patient-reviews', destination: '/review', permanent: true },
       { source: '/tools/patient-reviews/:path*', destination: '/review/:path*', permanent: true },
       { source: '/tools/hair-transplant', destination: '/hair-transplant', permanent: true },
