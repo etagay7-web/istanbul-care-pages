@@ -257,22 +257,6 @@ export default function BlogPage() {
                     id={`panel-${author.slug}`}
                     className="mt-4 rounded-2xl bg-white border border-soft/40 shadow-sm overflow-hidden"
                   >
-                    <div className="px-6 md:px-8 pt-6">
-                      <h4 className="text-xs font-semibold uppercase tracking-wider text-secondary mb-3">
-                        Service categories
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {author.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="inline-flex rounded-full bg-primary text-white text-xs font-semibold px-3 py-1.5 shadow-sm"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
                     <ul className="px-2 md:px-4 py-6">
                       {author.posts.map((post) => (
                         <li key={post.slug}>
