@@ -25,15 +25,6 @@ const hairTransplantTools = [
   { label: 'Travel & Budget Planner', href: '/tools/budget-planner' }
 ];
 
-const aestheticLinks = [
-  { label: 'Rhinoplasty in Turkey', href: '/services/rhinoplasty' },
-  { label: 'Mega Liposuction', href: '/services/mega-liposuction' },
-  { label: 'Facelift in Turkey', href: '/services/facelift' },
-  { label: 'Breast Augmentation', href: '/services/breast-augmentation' },
-  { label: 'Brazilian Butt Lift', href: '/services/bbl' },
-  { label: 'Sleeve Gastrectomy', href: '/services/sleeve-gastrectomy' }
-];
-
 const companyLinks = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Services', href: '/services' },
@@ -51,7 +42,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white">
       <div className="max-w-8xl mx-auto px-4 lg:px-12 py-14">
-        <div className="grid gap-10 lg:gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 lg:gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent font-bold">
@@ -82,7 +73,6 @@ export default function Footer() {
 
           <FooterColumn title="Hair Transplant" links={hairTransplantLinks} />
           <FooterColumn title="Hair Transplant Tools" links={hairTransplantTools} highlight />
-          <FooterColumn title="Aesthetic Surgery" links={aestheticLinks} />
           <FooterColumn title="Company" links={companyLinks} />
         </div>
       </div>
