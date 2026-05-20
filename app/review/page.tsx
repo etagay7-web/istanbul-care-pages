@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 const reviews = [
   {
+    slug: 'michael-r-sapphire-fue-3800',
     name: 'Michael R.',
     country: 'United Kingdom',
     age: 34,
@@ -23,6 +24,7 @@ const reviews = [
     after: 'https://picsum.photos/seed/m-r-after/600/600'
   },
   {
+    slug: 'daniel-k-dhi-3200',
     name: 'Daniel K.',
     country: 'Germany',
     age: 41,
@@ -36,6 +38,7 @@ const reviews = [
     after: 'https://picsum.photos/seed/d-k-after/600/600'
   },
   {
+    slug: 'sofia-l-dhi-women-2100',
     name: 'Sofia L.',
     country: 'Italy',
     age: 38,
@@ -49,6 +52,7 @@ const reviews = [
     after: 'https://picsum.photos/seed/s-l-after/600/600'
   },
   {
+    slug: 'adam-t-fue-2900',
     name: 'Adam T.',
     country: 'Poland',
     age: 29,
@@ -62,6 +66,7 @@ const reviews = [
     after: 'https://picsum.photos/seed/a-t-after/600/600'
   },
   {
+    slug: 'carlos-m-sapphire-fue-4500',
     name: 'Carlos M.',
     country: 'Spain',
     age: 45,
@@ -75,6 +80,7 @@ const reviews = [
     after: 'https://picsum.photos/seed/c-m-after/600/600'
   },
   {
+    slug: 'henri-p-beard-transplant-1600',
     name: 'Henri P.',
     country: 'France',
     age: 36,
@@ -123,10 +129,11 @@ export default function ReviewPage() {
 
       <section className="max-w-8xl mx-auto px-4 lg:px-12 pb-16">
         <div className="grid gap-8 md:grid-cols-2">
-          {reviews.map((r, i) => (
-            <article
-              key={i}
-              className="rounded-2xl overflow-hidden border border-soft/40 bg-white shadow-sm hover:shadow-xl transition-shadow"
+          {reviews.map((r) => (
+            <Link
+              key={r.slug}
+              href={`/review/${r.slug}`}
+              className="group block rounded-2xl overflow-hidden border border-soft/40 bg-white shadow-sm hover:shadow-xl hover:border-secondary transition-all"
             >
               <div className="grid grid-cols-2">
                 <BeforeAfter src={r.before} label="Before" />
@@ -135,7 +142,9 @@ export default function ReviewPage() {
               <div className="p-6">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div>
-                    <h3 className="text-lg font-semibold text-primary">{r.name}</h3>
+                    <h3 className="text-lg font-semibold text-primary group-hover:text-secondary">
+                      {r.name}
+                    </h3>
                     <p className="text-xs text-primary/60">
                       {r.country} · {r.age} yrs
                     </p>
@@ -153,14 +162,11 @@ export default function ReviewPage() {
                   “{r.quote}”
                 </p>
 
-                <Link
-                  href="/contact-us"
-                  className="mt-5 inline-flex text-sm font-semibold text-accent-strong hover:text-accent"
-                >
+                <span className="mt-5 inline-flex text-sm font-semibold text-accent-strong group-hover:text-accent">
                   Read full case →
-                </Link>
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>

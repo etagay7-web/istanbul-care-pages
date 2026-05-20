@@ -17,7 +17,10 @@ const hairTransplantTools = [
   { label: 'Hair Density Estimator', href: '/tools/hair-density' },
   { label: 'Price Estimator', href: '/tools/price-estimator' },
   { label: 'Hair Loss Quiz', href: '/tools/hair-loss-quiz' },
-  { label: 'Recovery Timeline', href: '/tools/recovery-timeline' }
+  { label: 'Recovery Timeline', href: '/tools/recovery-timeline' },
+  { label: 'Beard Graft Calculator', href: '/tools/beard-calculator' },
+  { label: 'Eyebrow Graft Calculator', href: '/tools/eyebrow-calculator' },
+  { label: 'Travel & Budget Planner', href: '/tools/budget-planner' }
 ];
 
 const aestheticLinks = [
