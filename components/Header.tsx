@@ -82,7 +82,7 @@ export default function Header() {
 
           <Dropdown title="Tools" items={tools} />
 
-          <NavLink href="/review">Reviews</NavLink>
+          <NavLink href="/before-after">Reviews</NavLink>
           <NavLink href="/blog">Blog</NavLink>
           <NavLink href="/celebrity-hair-transplant">Celebrities</NavLink>
           <NavLink href="/faq">FAQ</NavLink>
@@ -147,7 +147,7 @@ export default function Header() {
 
           <MobileGroup label="Tools" items={tools} onNavigate={() => setMobileOpen(false)} />
 
-          <MobileLink href="/review" onNavigate={() => setMobileOpen(false)}>
+          <MobileLink href="/before-after" onNavigate={() => setMobileOpen(false)}>
             Reviews
           </MobileLink>
           <MobileLink href="/blog" onNavigate={() => setMobileOpen(false)}>

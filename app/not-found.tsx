@@ -76,7 +76,7 @@ export default function NotFound() {
             Pricing
           </Link>
           <Link
-            href="/review"
+            href="/before-after"
             className="inline-flex rounded-full border border-primary/60 text-primary hover:bg-primary hover:text-white transition-colors px-5 py-2 text-sm font-semibold"
           >
             Patient Reviews

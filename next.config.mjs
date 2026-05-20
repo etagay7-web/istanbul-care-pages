@@ -8,8 +8,10 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/tools/patient-reviews', destination: '/review', permanent: true },
-      { source: '/tools/patient-reviews/:path*', destination: '/review/:path*', permanent: true },
+      { source: '/review', destination: '/before-after', permanent: true },
+      { source: '/review/:path*', destination: '/before-after/:path*', permanent: true },
+      { source: '/tools/patient-reviews', destination: '/before-after', permanent: true },
+      { source: '/tools/patient-reviews/:path*', destination: '/before-after/:path*', permanent: true },
       { source: '/tools/hair-transplant', destination: '/hair-transplant', permanent: true },
       { source: '/tools/hair-transplant/:path*', destination: '/hair-transplant/:path*', permanent: true },
       { source: '/tools/blog', destination: '/blog', permanent: true },

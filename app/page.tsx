@@ -289,7 +289,7 @@ export default function Home() {
               </svg>
             </Link>
             <Link
-              href="/review"
+              href="/before-after"
               className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 backdrop-blur px-6 py-3.5 text-sm md:text-base font-semibold text-white hover:bg-white/15 hover:border-white transition-colors"
             >
               View Patient Results
@@ -598,7 +598,7 @@ export default function Home() {
 
           <div className="mt-10 text-center">
             <Link
-              href="/review"
+              href="/before-after"
               className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-3.5 text-sm md:text-base font-semibold hover:bg-primary-dark transition-colors"
             >
               View all patient results

@@ -358,7 +358,7 @@ export default function TechniquePage({ data }: { data: TechniqueData }) {
 
           <div className="mt-10 text-center">
             <Link
-              href="/review"
+              href="/before-after"
               className="inline-flex items-center justify-center rounded-full bg-primary text-white px-6 py-3 text-sm font-semibold hover:bg-primary-dark transition-colors"
             >
               See all patient reviews →

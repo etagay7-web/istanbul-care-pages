@@ -29,7 +29,7 @@ const companyLinks = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Services', href: '/services' },
   { label: 'Tools', href: '/tools' },
-  { label: 'Reviews', href: '/review' },
+  { label: 'Reviews', href: '/before-after' },
   { label: 'Blog', href: '/blog' },
   { label: 'Celebrity Hair Transplants', href: '/celebrity-hair-transplant' },
   { label: 'FAQ', href: '/faq' },

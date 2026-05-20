@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const hubCards = [
   {
-    href: '/review',
+    href: '/before-after',
     title: 'Patient Reviews',
     description: 'Real before/after stories from our patients',
     tag: 'Real Stories',
