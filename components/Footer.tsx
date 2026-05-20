@@ -40,6 +40,7 @@ const companyLinks = [
   { label: 'Tools', href: '/tools' },
   { label: 'Reviews', href: '/review' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Celebrity Hair Transplants', href: '/celebrity-hair-transplant' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact Us', href: '/contact-us' },
   { label: 'Privacy Policy', href: '/privacy-policy' },

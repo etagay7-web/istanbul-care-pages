@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Reviews', href: '/review' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Celebrities', href: '/celebrity-hair-transplant' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact Us', href: '/contact-us' }
 ];
