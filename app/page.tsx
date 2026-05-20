@@ -7,53 +7,70 @@ export const metadata: Metadata = {
     'Hair Transplant in Turkey and in Istanbul with Istanbul Care Clinic in 2026 — natural results, expert surgeons, and all-inclusive packages from $1,990.'
 };
 
-const techniques = [
+/* — — — DATA — — — */
+
+const hairTransplantServices = [
   {
     href: '/hair-transplant/dhi',
     title: 'DHI Hair Transplant',
-    description: 'Direct Hair Implantation with Choi pens — maximum density and natural direction.',
-    badge: 'Most Popular',
-    img: 'https://picsum.photos/seed/home-dhi/800/520'
+    blurb: 'Choi-pen direct implantation for maximum density.',
+    img: 'https://picsum.photos/seed/svc-dhi/800/520',
+    badge: 'Most Popular'
   },
   {
     href: '/hair-transplant/fue',
     title: 'FUE Hair Transplant',
-    description: 'The gold-standard follicle extraction technique with virtually no scarring.',
-    badge: 'Gold Standard',
-    img: 'https://picsum.photos/seed/home-fue/800/520'
+    blurb: 'Gold-standard follicle extraction with no linear scar.',
+    img: 'https://picsum.photos/seed/svc-fue/800/520',
+    badge: 'Gold Standard'
   },
   {
     href: '/hair-transplant/sapphire-fue',
     title: 'Sapphire FUE',
-    description: 'Sapphire-tipped blades for finer incisions, faster healing and denser packing.',
-    badge: 'Advanced',
-    img: 'https://picsum.photos/seed/home-sapphire/800/520'
+    blurb: 'Sapphire-tipped blades for finer channels.',
+    img: 'https://picsum.photos/seed/svc-sapphire/800/520',
+    badge: 'Advanced'
   },
   {
     href: '/hair-transplant/woman',
     title: 'Woman Hair Transplant',
-    description: 'No-shave DHI designed around your existing style, performed by our female team.',
-    img: 'https://picsum.photos/seed/home-woman/800/520'
+    blurb: 'No-shave DHI designed around your hairstyle.',
+    img: 'https://picsum.photos/seed/svc-woman/800/520'
   },
   {
     href: '/hair-transplant/beard',
     title: 'Beard Transplant',
-    description: 'Fill in patchy areas or design a full beard, moustache or sideburns.',
-    img: 'https://picsum.photos/seed/home-beard/800/520'
+    blurb: 'Reshape, fill in or design a full new beard.',
+    img: 'https://picsum.photos/seed/svc-beard/800/520'
   },
   {
     href: '/hair-transplant/eyebrow',
     title: 'Eyebrow Transplant',
-    description: 'Permanent, natural eyebrow restoration designed individually for your face.',
-    img: 'https://picsum.photos/seed/home-eyebrow/800/520'
+    blurb: 'Permanent, naturally growing eyebrow restoration.',
+    img: 'https://picsum.photos/seed/svc-eyebrow/800/520'
   }
+];
+
+const aestheticCategories = [
+  { label: 'Rhinoplasty', href: '/services/rhinoplasty' },
+  { label: 'Facelift', href: '/services/facelift' },
+  { label: 'Mega Liposuction', href: '/services/mega-liposuction' },
+  { label: 'Breast Augmentation', href: '/services/breast-augmentation' },
+  { label: 'Breast Lift', href: '/services/breast-lift' },
+  { label: 'Breast Reduction', href: '/services/breast-reduction' },
+  { label: 'Brazilian Butt Lift', href: '/services/bbl' },
+  { label: 'Sleeve Gastrectomy', href: '/services/sleeve-gastrectomy' },
+  { label: 'Gastric Bypass', href: '/services/gastric-bypass' },
+  { label: 'Gastric Balloon', href: '/services/gastric-balloon' },
+  { label: 'Hollywood Smile', href: '/services/hollywood-smile' },
+  { label: 'Dental Implants', href: '/services/implants' }
 ];
 
 const featuredTools = [
   {
     href: '/tools/graft-calculator',
     title: 'Graft Calculator',
-    description: 'Estimate how many grafts you may need based on your hair loss pattern.',
+    description: 'Estimate how many grafts your case may need.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
         <rect x="4" y="4" width="16" height="16" rx="2" />
@@ -64,7 +81,7 @@ const featuredTools = [
   {
     href: '/tools/price-estimator',
     title: 'Price Estimator',
-    description: 'Get an instant package quote — surgeon, technique, hotel and transfers.',
+    description: 'Get an instant all-inclusive package quote.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
         <line x1="12" y1="1" x2="12" y2="23" />
@@ -75,7 +92,7 @@ const featuredTools = [
   {
     href: '/tools/norwood-scale',
     title: 'Norwood Scale Tool',
-    description: 'Identify your stage on the Norwood–Hamilton scale of hair loss.',
+    description: 'Identify your stage on the Norwood–Hamilton scale.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
         <path d="M3 12h4l3-9 4 18 3-9h4" />
@@ -84,78 +101,104 @@ const featuredTools = [
   }
 ];
 
-const reasons = [
-  {
-    title: '2,000+ Operations',
-    description: 'Board-certified surgeons since 2018.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-      </svg>
-    )
-  },
-  {
-    title: 'All-Inclusive from $1,990',
-    description: 'Flights, hotel, transfers included.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
-        <rect x="2" y="6" width="20" height="13" rx="2" />
-        <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-      </svg>
-    )
-  },
-  {
-    title: 'Lifetime Aftercare',
-    description: 'Support long after you leave Istanbul.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l8.84 8.84 8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />
-      </svg>
-    )
-  },
-  {
-    title: '4.9★ Patient Rating',
-    description: 'Verified across 40+ countries.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7">
-        <path d="M12 1l3.09 6.26L22 8.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 13.14 2 8.27l6.91-1.01L12 1z" />
-      </svg>
-    )
-  }
+const clinicStats = [
+  { stat: '2,000+', label: 'Successful Operations' },
+  { stat: '4.9★', label: 'Verified Patient Rating' },
+  { stat: '40+', label: 'Countries Served' },
+  { stat: '$1,990', label: 'Packages From' }
 ];
 
-const beforeAfter = [
-  { grafts: 3800, months: 12, technique: 'Sapphire FUE' },
-  { grafts: 3200, months: 10, technique: 'DHI' },
-  { grafts: 2900, months: 9, technique: 'FUE' },
-  { grafts: 4500, months: 14, technique: 'Sapphire FUE' }
-];
-
-const processSteps = [
+const roadmap = [
   {
     n: 1,
-    title: 'Free Consultation',
-    description: 'Share your photos, get an honest assessment from our coordinators within 24 hours.'
+    title: 'Day of Surgery',
+    body: 'Anaesthesia, extraction and implantation. You leave the clinic with the procedure complete and aftercare in hand.'
   },
   {
     n: 2,
-    title: 'Treatment Plan',
-    description: 'Our surgeons design your procedure, graft count and recommend the best technique.'
+    title: 'Days 1–7',
+    body: 'Healing scabs form and fall off. Forehead swelling, if any, resolves by day 6. First clinic wash the morning after.'
   },
   {
     n: 3,
-    title: 'Travel to Istanbul',
-    description: 'We arrange airport pickup, your hotel and all transfers to and from the clinic.'
+    title: 'Weeks 2–6',
+    body: 'Transplanted hairs shed — normal and expected. The donor area heals invisibly. Return to work within 5–7 days.'
   },
   {
     n: 4,
-    title: 'Hair Transplant',
-    description: 'Your DHI, FUE or Sapphire FUE procedure with a specialist surgeon and full team.'
+    title: 'Months 3–6',
+    body: 'New growth begins around month 4. By month 6 you have visible, building coverage with finer new hairs.'
   },
   {
     n: 5,
-    title: 'Recovery & Follow-up',
-    description: 'Aftercare kit, scheduled clinic wash, and check-ins at 3, 6 and 12 months.'
+    title: 'Month 12+',
+    body: 'Around 90% of final density by month 12. Hairs continue to thicken until month 15. Photos at 3, 6 and 12 months.'
+  }
+];
+
+const reviews = [
+  {
+    name: 'Michael R.',
+    country: 'United Kingdom',
+    technique: 'Sapphire FUE',
+    quote:
+      'Twelve months in and the density is incredible. The team kept me informed at every step — felt completely safe.'
+  },
+  {
+    name: 'Daniel K.',
+    country: 'Germany',
+    technique: 'DHI',
+    quote:
+      'Hairline is exactly what I asked for. Friends say it looks like I never lost any hair. Worth every euro.'
+  },
+  {
+    name: 'Sofia L.',
+    country: 'Italy',
+    technique: 'DHI for Women',
+    quote:
+      'Being a woman, I was nervous. The team was caring and discreet. My parting line finally looks natural.'
+  }
+];
+
+const whyUs = [
+  {
+    title: 'Surgeon-led care',
+    body: 'Every operation is led by a board-certified specialist, not a technician. You meet your surgeon before you sign anything.'
+  },
+  {
+    title: 'All-inclusive packages',
+    body: 'Surgery, hotel, transfers, PRP and aftercare bundled — from $1,990. No surprise add-ons after you arrive.'
+  },
+  {
+    title: 'Lifetime aftercare',
+    body: 'Photo follow-ups at 3, 6 and 12 months and beyond. The team stays with you long after you leave Istanbul.'
+  },
+  {
+    title: 'International patient team',
+    body: 'Coordinators speak English, German, French, Spanish, Italian, Polish, Romanian and Albanian. We are used to long-distance care.'
+  }
+];
+
+const faq = [
+  {
+    q: 'How much does a hair transplant in Turkey cost at Istanbul Care?',
+    a: 'All-inclusive packages start from $1,990, depending on the technique (FUE, DHI or Sapphire FUE) and the number of grafts required. The price includes the surgery itself, the surgeon’s fee, hotel accommodation, airport and clinic transfers, PRP, the aftercare kit and follow-up sessions at 3, 6 and 12 months.'
+  },
+  {
+    q: 'How long do I need to stay in Istanbul?',
+    a: 'Most patients travel for two nights. You arrive the day before surgery, have your operation the next day, return the morning after for your first clinic wash, and fly home the same evening or the day after. For larger or unshaven sessions, we recommend an extra night.'
+  },
+  {
+    q: 'Which technique is right for me?',
+    a: 'It depends on your hair loss stage, donor density, lifestyle and budget. Our coordinators will review your photos and recommend the best fit — usually FUE, DHI or Sapphire FUE. You can use our Norwood Scale Tool and Graft Calculator first to get a sense of where you stand.'
+  },
+  {
+    q: 'Is the result permanent?',
+    a: 'Yes. The transplanted follicles come from the back and sides of your scalp, which is genetically resistant to the hormonal causes of male pattern baldness. Once they take root in the recipient area, they grow for life.'
+  },
+  {
+    q: 'When will I see my final results?',
+    a: 'New growth typically appears around month 4. By month 6, coverage is clearly visible. Around month 12, approximately 90% of your final density is in place, with continued thickening up to month 15.'
   }
 ];
 
@@ -163,7 +206,8 @@ const blogPreview = [
   {
     slug: 'bald-mans-guide-to-modern-hair-restoration',
     title: "Bald Man's Guide to Modern Hair Restoration",
-    excerpt: 'A complete look at the modern restoration options for men experiencing significant hair loss.',
+    excerpt:
+      'A complete look at the modern restoration options for men experiencing significant hair loss.',
     date: '2026-05-12',
     category: 'Hair Transplant',
     readingTime: 9,
@@ -172,7 +216,8 @@ const blogPreview = [
   {
     slug: 'sapphire-fue-a-surgeons-honest-guide',
     title: "Sapphire FUE: A Surgeon's Honest Guide",
-    excerpt: 'What sapphire blades actually change, how density compares, and when this technique is the right choice.',
+    excerpt:
+      'What sapphire blades actually change, how density compares, and when this technique is the right choice.',
     date: '2026-04-29',
     category: 'Hair Transplant',
     readingTime: 10,
@@ -181,7 +226,8 @@ const blogPreview = [
   {
     slug: 'hair-transplant-aftercare-week-by-week',
     title: 'Hair Transplant Aftercare: Week by Week',
-    excerpt: 'What to expect in days 1–7, weeks 2–4 and month-by-month from your hair transplant recovery.',
+    excerpt:
+      'What to expect in days 1–7, weeks 2–4 and month-by-month from your hair transplant recovery.',
     date: '2026-04-20',
     category: 'Aftercare',
     readingTime: 7,
@@ -189,17 +235,19 @@ const blogPreview = [
   }
 ];
 
-const trustBadges = [
-  { label: 'Google Reviews', value: '4.9★' },
-  { label: 'Trustpilot', value: '4.8★' },
-  { label: 'Verified Clinic Badge', value: '' },
-  { label: 'ISO Certified', value: '' },
-  { label: '8+ Years Experience', value: '' },
-  { label: 'Happy Patients', value: '2,000+' }
+const trustItems = [
+  { value: '4.9★', label: 'Google Reviews' },
+  { value: '4.8★', label: 'Trustpilot' },
+  { label: 'Verified Clinic Badge' },
+  { label: 'ISO Certified' },
+  { label: '8+ Years Experience' },
+  { value: '2,000+', label: 'Happy Patients' }
 ];
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+/* — — — PAGE — — — */
 
 export default function Home() {
   return (
@@ -221,27 +269,21 @@ export default function Home() {
           </span>
 
           <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl drop-shadow">
-            Hair Transplant in Turkey
+            Hair Transplant in Turkey at Istanbul Care
           </h1>
           <p className="mt-5 text-base md:text-xl text-white/90 leading-relaxed max-w-3xl">
-            Istanbul Care Clinic in 2026 offers natural results, expert surgeons, and all-inclusive
-            packages from $1,990.
+            Natural results, expert surgeons, and all-inclusive packages from $1,990 — performed in
+            our modern Istanbul clinic by a board-certified medical team trusted by patients from
+            more than 40 countries.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href="/contact-us"
+              href="#contact"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm md:text-base font-semibold text-white hover:bg-accent-strong transition-colors shadow-lg"
             >
               Get Free Consultation
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                className="h-4 w-4"
-              >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
@@ -255,12 +297,7 @@ export default function Home() {
           </div>
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
-            {[
-              { stat: '2,000+', label: 'Successful Operations' },
-              { stat: '4.9★', label: 'Verified Rating' },
-              { stat: '40+', label: 'Countries' },
-              { stat: '$1,990', label: 'Packages from' }
-            ].map((s) => (
+            {clinicStats.map((s) => (
               <div
                 key={s.label}
                 className="rounded-2xl bg-white/10 backdrop-blur border border-white/20 px-4 py-4"
@@ -273,7 +310,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2 — TRUST LOGOS MARQUEE */}
+      {/* 2 — TRUST MARQUEE */}
       <section className="bg-white border-b border-soft/30 py-8">
         <div className="marquee-mask overflow-hidden">
           <div className="marquee-track">
@@ -283,9 +320,9 @@ export default function Home() {
                 aria-hidden={dup === 1}
                 className="flex shrink-0 items-center gap-10 md:gap-14 pr-10 md:pr-14"
               >
-                {trustBadges.map((b) => (
+                {trustItems.map((b, i) => (
                   <li
-                    key={`${dup}-${b.label}`}
+                    key={`${dup}-${i}-${b.label}`}
                     className="inline-flex items-center gap-3 text-primary/80 whitespace-nowrap"
                   >
                     {b.value ? (
@@ -295,13 +332,7 @@ export default function Home() {
                         aria-hidden
                         className="h-9 w-9 rounded-full bg-primary/5 text-secondary inline-flex items-center justify-center"
                       >
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          className="h-5 w-5"
-                        >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                           <path d="M9 12l2 2 4-4" />
                           <circle cx="12" cy="12" r="10" />
                         </svg>
@@ -318,23 +349,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3 — TECHNIQUES */}
+      {/* 3 — OUR SERVICES (Hair Transplant Techniques) */}
       <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
         <div className="mb-12 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-            Surgical methods
+            Our Services
           </span>
           <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-            Hair Transplant Techniques
+            Hair Transplant Techniques at Istanbul Care
           </h2>
           <p className="mt-4 text-primary/75 leading-relaxed">
-            From classic FUE to the latest DHI and Sapphire methods, our medical team will help you
+            From classic FUE to the latest DHI and Sapphire methods, our medical team helps you
             choose the right technique for your hair type, goals and lifestyle.
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {techniques.map((t) => (
+          {hairTransplantServices.map((t) => (
             <Link
               key={t.href}
               href={t.href}
@@ -358,7 +389,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-sm text-primary/75 leading-relaxed">{t.description}</p>
+                <p className="text-sm text-primary/75 leading-relaxed">{t.blurb}</p>
                 <span className="mt-5 inline-flex items-center text-sm font-semibold text-accent-strong group-hover:text-accent">
                   Learn more →
                 </span>
@@ -368,19 +399,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4 — TOOLS */}
-      <section className="bg-zinc-50 border-y border-soft/40">
+      {/* 4 — FREE HAIR TRANSPLANT TOOLS (new section, requested copy) */}
+      <section style={{ backgroundColor: '#f8f9fa' }} className="border-y border-soft/40">
         <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
           <div className="mb-12 max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">
               Free Clinic Tools
             </span>
             <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-              Plan your hair transplant with our free tools
+              Plan your hair transplant for free
             </h2>
             <p className="mt-4 text-primary/75 leading-relaxed">
-              Estimate your graft count, check pricing, understand your hair loss stage — all in one
-              place.
+              Our medical team built these tools to help you estimate grafts, understand your hair
+              loss stage and plan your budget — before you even speak to a surgeon.
             </p>
           </div>
 
@@ -391,7 +422,7 @@ export default function Home() {
                 href={t.href}
                 className="group rounded-2xl bg-white border border-soft/40 p-7 hover:shadow-xl hover:border-secondary hover:-translate-y-1 transition-all"
               >
-                <div className="h-14 w-14 rounded-2xl brand-gradient text-white inline-flex items-center justify-center">
+                <div className="h-14 w-14 rounded-2xl bg-accent/10 text-accent-strong inline-flex items-center justify-center">
                   {t.icon}
                 </div>
                 <h3 className="mt-5 text-lg md:text-xl font-semibold text-primary">{t.title}</h3>
@@ -410,15 +441,8 @@ export default function Home() {
               href="/tools"
               className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-3.5 text-sm md:text-base font-semibold hover:bg-primary-dark transition-colors"
             >
-              View All 9 Free Tools
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                className="h-4 w-4"
-              >
+              Explore All 9 Free Tools
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
@@ -427,7 +451,167 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5 — WHY ISTANBUL CARE */}
+      {/* 5 — PREMIUM CLINIC INTRO */}
+      <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20 grid gap-10 lg:grid-cols-2 items-center">
+        <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl ring-1 ring-soft/40">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://picsum.photos/seed/modern-clinic/900/700"
+            alt="Istanbul Care modern clinic"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-transparent" />
+        </div>
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+            Premium care
+          </span>
+          <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
+            Premium Hair Transplant in Turkey at Modern Clinics
+          </h2>
+          <p className="mt-4 text-primary/75 leading-relaxed">
+            Istanbul Care operates from a fully accredited Istanbul facility built around
+            international patient care. Every procedure is performed by a board-certified surgeon,
+            supported by a trained medical team that has handled over 2,000 successful operations
+            since 2018.
+          </p>
+          <p className="mt-4 text-primary/75 leading-relaxed">
+            Our packages bundle surgery, hotel, transfers and aftercare so there are no surprises
+            after you arrive. Coordinators speak nine languages and stay with you long after you
+            leave Istanbul.
+          </p>
+          <div className="mt-8 grid gap-3 grid-cols-2 max-w-md">
+            {[
+              { stat: '2,000+', label: 'Operations' },
+              { stat: 'Since 2018', label: 'In Istanbul' },
+              { stat: '9 languages', label: 'Patient support' },
+              { stat: '4.9★', label: 'Patient rating' }
+            ].map((s) => (
+              <div key={s.label} className="rounded-2xl bg-primary/5 border border-soft/40 p-4">
+                <div className="text-xl font-bold text-primary">{s.stat}</div>
+                <div className="text-xs text-primary/70 mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6 — HIGH QUALITY AESTHETIC SURGERY */}
+      <section className="bg-primary/5 border-y border-soft/40">
+        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
+          <div className="mb-10 max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+              Beyond hair
+            </span>
+            <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
+              High Quality Aesthetic Surgery in Turkey
+            </h2>
+            <p className="mt-4 text-primary/75 leading-relaxed">
+              Our specialist partner surgeons deliver the same all-inclusive standard across
+              aesthetic, bariatric and dental procedures. Click any category to learn more.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {aestheticCategories.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                className="inline-flex items-center gap-2 rounded-full bg-white border border-soft/40 text-primary px-5 py-2.5 text-sm font-semibold hover:bg-secondary hover:text-white hover:border-secondary transition-colors"
+              >
+                {c.label}
+                <span aria-hidden>→</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7 — ROADMAP / TIMELINE */}
+      <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
+        <div className="mb-12 max-w-3xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+            Patient journey
+          </span>
+          <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
+            Hair Transplant Roadmap of Recovery
+          </h2>
+          <p className="mt-4 text-primary/75 leading-relaxed">
+            What to expect from the day of your operation through to mature results at twelve
+            months.
+          </p>
+        </div>
+
+        <ol className="relative grid gap-8 md:grid-cols-5">
+          <span
+            aria-hidden
+            className="hidden md:block absolute left-0 right-0 top-6 h-0.5 bg-soft/60"
+          />
+          {roadmap.map((s) => (
+            <li key={s.n} className="relative text-center md:text-left">
+              <div className="mx-auto md:mx-0 h-12 w-12 rounded-full brand-gradient text-white flex items-center justify-center font-bold text-lg ring-4 ring-white relative z-10">
+                {s.n}
+              </div>
+              <h3 className="mt-5 text-base md:text-lg font-semibold text-primary leading-snug">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-sm text-primary/75 leading-relaxed">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* 8 — REVIEWS */}
+      <section className="bg-primary/5 border-y border-soft/40">
+        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
+          <div className="mb-12 max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
+              Patient stories
+            </span>
+            <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
+              Reviews from Real Patients
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {reviews.map((r) => (
+              <article
+                key={r.name}
+                className="rounded-2xl bg-white border border-soft/40 p-7 shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <div className="flex items-center gap-1 text-accent text-lg" aria-hidden>
+                  ★★★★★
+                </div>
+                <p className="mt-4 text-primary/85 leading-relaxed italic">“{r.quote}”</p>
+                <div className="mt-6 pt-5 border-t border-soft/40 flex items-center justify-between">
+                  <div>
+                    <div className="font-semibold text-primary">{r.name}</div>
+                    <div className="text-xs text-primary/60">{r.country}</div>
+                  </div>
+                  <span className="inline-flex rounded-full bg-secondary/10 text-primary text-xs font-semibold px-3 py-1">
+                    {r.technique}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/review"
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-3.5 text-sm md:text-base font-semibold hover:bg-primary-dark transition-colors"
+            >
+              View all patient results
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 9 — WHY ISTANBUL CARE */}
       <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
         <div className="mb-12 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -439,136 +623,130 @@ export default function Home() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((r) => (
+          {whyUs.map((w) => (
             <div
-              key={r.title}
+              key={w.title}
               className="rounded-2xl bg-white border border-soft/40 p-6 hover:shadow-lg hover:border-secondary transition-all"
             >
-              <div className="h-12 w-12 rounded-xl brand-gradient text-white flex items-center justify-center">
-                {r.icon}
-              </div>
+              <div className="h-10 w-10 rounded-lg brand-gradient" />
               <h3 className="mt-5 text-base md:text-lg font-semibold text-primary leading-snug">
-                {r.title}
+                {w.title}
               </h3>
-              <p className="mt-2 text-sm text-primary/75 leading-relaxed">{r.description}</p>
+              <p className="mt-2 text-sm text-primary/75 leading-relaxed">{w.body}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 6 — BEFORE & AFTER */}
-      <section className="bg-primary/5 border-y border-soft/40">
-        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
-          <div className="mb-12 max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-              Patient results
+      {/* 10 — MEDICAL TOURISM */}
+      <section className="relative isolate overflow-hidden text-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://picsum.photos/seed/istanbul-bosphorus/1920/900"
+          alt="Istanbul Bosphorus skyline"
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary-strong/90 via-primary/75 to-primary-strong/60" />
+
+        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-24 grid gap-10 lg:grid-cols-2 items-center">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-accent-light">
+              Medical tourism
             </span>
-            <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-              Real Patient Results
+            <h2 className="mt-3 text-2xl md:text-4xl font-bold leading-tight">
+              Experience the splendor of medical tourism
             </h2>
-            <p className="mt-4 text-primary/75 leading-relaxed">
-              Real before/after photos from people who chose Istanbul Care. Every case is followed
-              at 3, 6 and 12 months.
+            <p className="mt-4 text-white/90 leading-relaxed max-w-xl">
+              Istanbul is one of the world&apos;s great cities — and one of its busiest hubs for
+              medical travel. Our patients combine world-class hair restoration with two nights in
+              a comfortable hotel near the clinic, all transfers handled, and time to explore the
+              city if they wish.
             </p>
+            <ul className="mt-6 grid gap-3 max-w-xl">
+              {[
+                'Airport pickup and clinic transfers included',
+                'Hotel selected for proximity to the clinic and English-speaking staff',
+                'Coordinators available 24/7 in your language',
+                'PRP, aftercare kit and post-op clinic wash included'
+              ].map((b) => (
+                <li key={b} className="flex items-start gap-3 text-sm md:text-base">
+                  <span
+                    className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-white shrink-0"
+                    aria-hidden
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="h-3 w-3">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <span className="text-white/90">{b}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {beforeAfter.map((c, i) => (
-              <article
-                key={i}
-                className="rounded-2xl overflow-hidden bg-white border border-soft/40 shadow-sm hover:shadow-xl transition-shadow"
-              >
-                <div className="grid grid-cols-2">
-                  <div className="relative aspect-square overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`https://picsum.photos/seed/home-ba-${i}-b/400/400`}
-                      alt={`Before case ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                    <span className="absolute bottom-2 left-2 rounded-full bg-primary/85 text-white text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1">
-                      Before
-                    </span>
-                  </div>
-                  <div className="relative aspect-square overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`https://picsum.photos/seed/home-ba-${i}-a/400/400`}
-                      alt={`After case ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                    <span className="absolute bottom-2 left-2 rounded-full bg-accent text-white text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1">
-                      After
-                    </span>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center flex-wrap gap-2 text-xs text-primary/70">
-                    <span className="inline-flex rounded-full bg-primary text-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider">
-                      {c.technique}
-                    </span>
-                    <span>{c.grafts.toLocaleString()} grafts</span>
-                    <span aria-hidden>·</span>
-                    <span>{c.months} months post-op</span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
+          <div className="rounded-3xl bg-white/10 backdrop-blur border border-white/20 p-6 md:p-8">
+            <h3 className="text-xl md:text-2xl font-bold">All-inclusive package</h3>
+            <p className="mt-2 text-white/80 text-sm">From</p>
+            <p className="text-5xl md:text-6xl font-bold mt-1">$1,990</p>
+            <ul className="mt-6 space-y-3 text-sm">
+              {[
+                'Surgeon-led FUE / DHI / Sapphire FUE',
+                'Two nights hotel near the clinic',
+                'All transfers airport ↔ hotel ↔ clinic',
+                'PRP and aftercare kit',
+                'Follow-up at 3, 6 and 12 months'
+              ].map((line) => (
+                <li key={line} className="flex items-start gap-3">
+                  <span className="text-accent-light">✓</span>
+                  <span className="text-white/90">{line}</span>
+                </li>
+              ))}
+            </ul>
             <Link
-              href="/review"
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-3.5 text-sm md:text-base font-semibold hover:bg-primary-dark transition-colors"
+              href="#contact"
+              className="mt-7 block text-center rounded-full bg-accent hover:bg-accent-strong transition-colors px-5 py-3 text-sm font-semibold"
             >
-              View All Cases
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                className="h-4 w-4"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
+              Get my personal quote
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 7 — HOW IT WORKS */}
+      {/* 11 — FAQ */}
       <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-10 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-            Patient journey
+            Frequently asked questions
           </span>
           <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-            How It Works
+            Common questions about hair transplant in Turkey
           </h2>
         </div>
 
-        <ol className="relative grid gap-8 md:grid-cols-5">
-          <span
-            aria-hidden
-            className="hidden md:block absolute left-0 right-0 top-6 h-0.5 bg-soft/60"
-          />
-          {processSteps.map((s) => (
-            <li key={s.n} className="relative text-center md:text-left">
-              <div className="mx-auto md:mx-0 h-12 w-12 rounded-full brand-gradient text-white flex items-center justify-center font-bold text-lg ring-4 ring-white relative z-10">
-                {s.n}
+        <div className="space-y-3">
+          {faq.map((item, i) => (
+            <details
+              key={i}
+              open={i === 0}
+              className="group rounded-xl bg-white border border-soft/40 hover:border-secondary transition-colors overflow-hidden"
+            >
+              <summary className="list-none cursor-pointer select-none flex items-center justify-between gap-4 p-5 hover:bg-primary/5">
+                <h3 className="font-semibold text-primary text-base md:text-lg">{item.q}</h3>
+                <span
+                  aria-hidden
+                  className="shrink-0 h-9 w-9 inline-flex items-center justify-center rounded-full bg-primary/5 text-primary text-lg transition-transform group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <div className="px-5 pb-5 -mt-1 text-sm md:text-base text-primary/80 leading-relaxed">
+                {item.a}
               </div>
-              <h3 className="mt-5 text-base md:text-lg font-semibold text-primary leading-snug">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm text-primary/75 leading-relaxed">{s.description}</p>
-            </li>
+            </details>
           ))}
-        </ol>
+        </div>
       </section>
 
-      {/* 8 — BLOG PREVIEW */}
+      {/* 12 — OUR BLOG */}
       <section className="bg-primary/5 border-y border-soft/40">
         <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16 md:py-20">
           <div className="mb-12 max-w-3xl">
@@ -576,7 +754,7 @@ export default function Home() {
               Editorial
             </span>
             <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-              Latest from Our Blog
+              Our Blog
             </h2>
             <p className="mt-4 text-primary/75 leading-relaxed">
               Guides, research and aftercare tips written by our medical team.
@@ -626,15 +804,8 @@ export default function Home() {
               href="/blog"
               className="inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-3.5 text-sm md:text-base font-semibold hover:bg-primary-dark transition-colors"
             >
-              Read All Articles
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                className="h-4 w-4"
-              >
+              Read all articles
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
@@ -643,7 +814,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9 — CONTACT CTA */}
+      {/* 13 — REACH US NOW (Contact form) */}
       <section
         id="contact"
         className="text-white scroll-mt-24"
@@ -655,12 +826,10 @@ export default function Home() {
               <span className="h-1.5 w-1.5 rounded-full bg-white" />
               Free consultation
             </span>
-            <h2 className="mt-5 text-3xl md:text-5xl font-bold leading-tight">
-              Get Your Free Consultation Today
-            </h2>
+            <h2 className="mt-5 text-3xl md:text-5xl font-bold leading-tight">Reach Us Now</h2>
             <p className="mt-4 text-white/90 max-w-xl leading-relaxed">
-              Speak with our expert hair transplant specialists. We&apos;ll review your photos and
-              respond with an honest, all-inclusive plan within 24 hours.
+              Speak with our expert hair transplant specialists. Share your photos and goals and
+              we&apos;ll respond with an honest, all-inclusive plan within 24 hours.
             </p>
 
             <form className="mt-8 grid gap-4 max-w-xl" method="post" action="/api/contact">
@@ -671,7 +840,6 @@ export default function Home() {
                 required
                 className="w-full rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white placeholder:text-white/70 focus:outline-none focus:border-white"
               />
-
               <div className="flex gap-2">
                 <div className="flex items-center gap-2 rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-3 py-3.5 text-white shrink-0">
                   <span aria-hidden>🇹🇷</span>
@@ -685,7 +853,6 @@ export default function Home() {
                   className="flex-1 rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white placeholder:text-white/70 focus:outline-none focus:border-white"
                 />
               </div>
-
               <input
                 type="email"
                 name="email"
@@ -693,7 +860,6 @@ export default function Home() {
                 required
                 className="w-full rounded-xl bg-primary-strong/40 backdrop-blur border border-white/20 px-4 py-3.5 text-white placeholder:text-white/70 focus:outline-none focus:border-white"
               />
-
               <select
                 name="service"
                 required
@@ -724,7 +890,6 @@ export default function Home() {
                   </option>
                 ))}
               </select>
-
               <button
                 type="submit"
                 className="mt-2 inline-flex items-center justify-center rounded-xl bg-primary-strong hover:bg-primary-dark transition-colors px-6 py-4 text-base font-semibold text-white shadow-lg"
