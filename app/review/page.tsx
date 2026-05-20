@@ -132,7 +132,7 @@ export default function PatientReviewsPage() {
           {reviews.map((r) => (
             <Link
               key={r.slug}
-              href={`/tools/patient-reviews/${r.slug}`}
+              href={`/review/${r.slug}`}
               className="group block rounded-2xl overflow-hidden border border-soft/40 bg-white shadow-sm hover:shadow-xl hover:border-secondary transition-all"
             >
               <div className="grid grid-cols-2">

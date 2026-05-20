@@ -283,7 +283,7 @@ export default function BlogPage() {
                       {author.posts.map((post) => (
                         <Link
                           key={post.slug}
-                          href={`/tools/blog/${post.slug}`}
+                          href={`/blog/${post.slug}`}
                           className="group rounded-2xl overflow-hidden bg-white border border-soft/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden">

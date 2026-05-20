@@ -3,10 +3,11 @@ import Link from 'next/link';
 const navLinks = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Services', href: '/services' },
-  { label: 'Hair Transplant', href: '/tools/hair-transplant' },
-  { label: 'Reviews', href: '/tools/patient-reviews' },
+  { label: 'Hair Transplant', href: '/hair-transplant' },
+  { label: 'Tools', href: '/tools' },
+  { label: 'Reviews', href: '/review' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Blog', href: '/tools/blog' },
+  { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact Us', href: '/contact-us' }
 ];

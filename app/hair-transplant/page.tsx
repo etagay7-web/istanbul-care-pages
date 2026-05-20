@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const techniques = [
   {
-    href: '/tools/hair-transplant/dhi',
+    href: '/hair-transplant/dhi',
     title: 'DHI Hair Transplant',
     description:
       'Direct Hair Implantation with Choi pens — no incisions, faster healing, dense packing for natural results.',
@@ -20,7 +20,7 @@ const techniques = [
     recovery: '7–10 days'
   },
   {
-    href: '/tools/hair-transplant/fue',
+    href: '/hair-transplant/fue',
     title: 'FUE Hair Transplant',
     description:
       'The gold-standard Follicular Unit Extraction. Minimally invasive with virtually no scarring.',
@@ -30,7 +30,7 @@ const techniques = [
     recovery: '7–10 days'
   },
   {
-    href: '/tools/hair-transplant/sapphire-fue',
+    href: '/hair-transplant/sapphire-fue',
     title: 'Sapphire FUE',
     description:
       'FUE upgraded with sapphire blades for smaller incisions, denser placement, and faster healing.',
@@ -40,7 +40,16 @@ const techniques = [
     recovery: '7–10 days'
   },
   {
-    href: '/tools/hair-transplant/woman',
+    href: '/hair-transplant/fut',
+    title: 'FUT Hair Transplant',
+    description:
+      'Follicular Unit Transplantation — strip method ideal for very large sessions where maximum graft yield is required.',
+    img: 'https://picsum.photos/seed/fut/800/520',
+    duration: '5–7 hours',
+    recovery: '10–14 days'
+  },
+  {
+    href: '/hair-transplant/woman',
     title: 'Woman Hair Transplant',
     description:
       'Tailored to female hair loss patterns — no shaving required for many cases, completely discreet.',
@@ -49,7 +58,7 @@ const techniques = [
     recovery: '7–10 days'
   },
   {
-    href: '/tools/hair-transplant/afro',
+    href: '/hair-transplant/afro',
     title: 'Afro Hair Transplant',
     description:
       'Specialised techniques for curly hair follicles, handled by surgeons trained on afro-textured hair.',
@@ -58,7 +67,7 @@ const techniques = [
     recovery: '10–14 days'
   },
   {
-    href: '/tools/hair-transplant/beard',
+    href: '/hair-transplant/beard',
     title: 'Beard Transplant',
     description:
       'Fill in patchy areas or design a full new beard, moustache, sideburns or goatee.',
@@ -67,7 +76,7 @@ const techniques = [
     recovery: '5–7 days'
   },
   {
-    href: '/tools/hair-transplant/eyebrow',
+    href: '/hair-transplant/eyebrow',
     title: 'Eyebrow Transplant',
     description:
       'Restore shape and density with permanent, naturally growing eyebrow hairs.',
@@ -76,7 +85,7 @@ const techniques = [
     recovery: '5–7 days'
   },
   {
-    href: '/tools/hair-transplant/unshaven',
+    href: '/hair-transplant/unshaven',
     title: 'Unshaven Hair Transplant',
     description:
       'Return to work the next day — undergo the procedure with little to no shaving of your hair.',
