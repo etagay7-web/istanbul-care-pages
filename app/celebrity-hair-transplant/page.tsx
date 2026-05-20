@@ -15,7 +15,6 @@ type Celebrity = {
   year: number;
   estGrafts: string;
   description: string;
-  img: string;
 };
 
 const celebrities: Celebrity[] = [
