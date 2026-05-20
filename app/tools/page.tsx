@@ -8,78 +8,27 @@ export const metadata: Metadata = {
     'Free calculators and tools to plan your hair transplant: graft calculator, Norwood scale, hair density estimator, price estimator and more.'
 };
 
-const tools = [
+const hubCards = [
   {
-    href: '/tools/graft-calculator',
-    title: 'Graft Calculator',
-    description:
-      'Estimate how many grafts you may need based on your hair loss pattern and goals.',
-    img: 'https://picsum.photos/seed/graft/640/400',
-    tag: 'Planning'
+    href: '/review',
+    title: 'Patient Reviews',
+    description: 'Real before/after stories from our patients',
+    tag: 'Real Stories',
+    img: 'https://picsum.photos/seed/review-hub/800/500'
   },
   {
-    href: '/tools/norwood-scale',
-    title: 'Norwood Scale Tool',
-    description:
-      'Identify your stage on the Norwood–Hamilton scale to understand your hair loss level.',
-    img: 'https://picsum.photos/seed/norwood/640/400',
-    tag: 'Diagnosis'
+    href: '/hair-transplant',
+    title: 'Hair Transplant',
+    description: 'DHI, FUE, Sapphire FUE and all techniques',
+    tag: 'Techniques',
+    img: 'https://picsum.photos/seed/hair-hub/800/500'
   },
   {
-    href: '/tools/hair-density',
-    title: 'Hair Density Estimator',
-    description:
-      'Calculate the density needed in donor and recipient areas for natural results.',
-    img: 'https://picsum.photos/seed/density/640/400',
-    tag: 'Diagnosis'
-  },
-  {
-    href: '/tools/price-estimator',
-    title: 'Price Estimator',
-    description:
-      'Get an instant package quote — surgeon, technique, hotel, and transfers included.',
-    img: 'https://picsum.photos/seed/price/640/400',
-    tag: 'Pricing'
-  },
-  {
-    href: '/tools/hair-loss-quiz',
-    title: 'Hair Loss Quiz',
-    description:
-      'Answer a few questions to see which transplant technique fits you best.',
-    img: 'https://picsum.photos/seed/quiz/640/400',
-    tag: 'Diagnosis'
-  },
-  {
-    href: '/tools/recovery-timeline',
-    title: 'Recovery Timeline',
-    description:
-      'A day-by-day, week-by-week guide of what to expect after your operation.',
-    img: 'https://picsum.photos/seed/recovery/640/400',
-    tag: 'Aftercare'
-  },
-  {
-    href: '/tools/beard-calculator',
-    title: 'Beard Graft Calculator',
-    description:
-      'Plan the grafts required for full beard, moustache, sideburns, or goatee shaping.',
-    img: 'https://picsum.photos/seed/beard/640/400',
-    tag: 'Planning'
-  },
-  {
-    href: '/tools/eyebrow-calculator',
-    title: 'Eyebrow Graft Calculator',
-    description:
-      'Determine the right graft count for shaped, natural-looking eyebrows.',
-    img: 'https://picsum.photos/seed/eyebrow/640/400',
-    tag: 'Planning'
-  },
-  {
-    href: '/tools/budget-planner',
-    title: 'Travel & Budget Planner',
-    description:
-      'Compare prices across techniques and add up flights, hotel and extras.',
-    img: 'https://picsum.photos/seed/budget/640/400',
-    tag: 'Pricing'
+    href: '/blog',
+    title: 'Blog',
+    description: 'Guides and aftercare tips from our medical team',
+    tag: 'Insights',
+    img: 'https://picsum.photos/seed/blog-hub/800/500'
   }
 ];
 
@@ -107,46 +56,55 @@ export default function ToolsPage() {
         subtitle="A complete suite of free, clinic-grade tools — graft calculators, Norwood diagnostics, pricing estimators and aftercare planners — built by our medical team."
       />
 
-      {/* Tools grid */}
+      {/* Hub cards */}
       <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
-        <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary">All clinic tools</h2>
-            <p className="mt-2 text-primary/70 max-w-2xl">
-              Pick a tool to get started. Every result is private to your browser — we never store anything without your consent.
-            </p>
-          </div>
-          <span className="text-sm font-semibold text-secondary uppercase tracking-wider">
-            {tools.length} tools available
-          </span>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool) => (
+        <div className="grid gap-6 md:grid-cols-3">
+          {hubCards.map((c) => (
             <Link
-              key={tool.href}
-              href={tool.href}
-              className="group rounded-2xl overflow-hidden bg-white border border-soft/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
+              key={c.href}
+              href={c.href}
+              className="group relative block overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="relative h-[300px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={tool.img}
-                  alt={tool.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  src={c.img}
+                  alt={c.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <span className="absolute top-3 left-3 rounded-full bg-accent text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1">
-                  {tool.tag}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-strong via-primary/55 to-primary/15" />
+
+                <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-light" />
+                  {c.tag}
                 </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-primary group-hover:text-secondary">
-                  {tool.title}
-                </h3>
-                <p className="mt-2 text-sm text-primary/70 leading-relaxed">{tool.description}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent-strong group-hover:text-accent">
-                  Use Tool →
-                </span>
+
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <h2 className="text-2xl md:text-3xl font-bold leading-tight drop-shadow">
+                    {c.title}
+                  </h2>
+                  <div className="mt-2 flex items-end justify-between gap-3">
+                    <p className="text-sm text-white/90 leading-relaxed max-w-xs">
+                      {c.description}
+                    </p>
+                    <span
+                      aria-hidden
+                      className="shrink-0 h-10 w-10 rounded-full bg-accent text-white inline-flex items-center justify-center transition-transform group-hover:translate-x-1"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="h-5 w-5"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}
