@@ -1,26 +1,21 @@
 import Link from 'next/link';
 
 const hairTransplantLinks = [
-  { label: 'Hair Transplant in Turkey', href: '/hair-transplant' },
-  { label: 'FUE Hair Transplant', href: '/hair-transplant/fue' },
-  { label: 'DHI Hair Transplant', href: '/hair-transplant/dhi' },
-  { label: 'Sapphire FUE Hair Transplant', href: '/hair-transplant/sapphire-fue' },
-  { label: 'Woman Hair Transplant', href: '/hair-transplant/woman' },
-  { label: 'Afro Hair Transplant', href: '/hair-transplant/afro' },
-  { label: 'Beard Transplant', href: '/hair-transplant/beard' },
-  { label: 'Eyebrow Transplant', href: '/hair-transplant/eyebrow' }
+  { label: 'Hair Transplant in Turkey', href: '/tools/hair-transplant' },
+  { label: 'FUE Hair Transplant', href: '/tools/hair-transplant/fue' },
+  { label: 'DHI Hair Transplant', href: '/tools/hair-transplant/dhi' },
+  { label: 'Sapphire FUE Hair Transplant', href: '/tools/hair-transplant/sapphire-fue' },
+  { label: 'Woman Hair Transplant', href: '/tools/hair-transplant/woman' },
+  { label: 'Afro Hair Transplant', href: '/tools/hair-transplant/afro' },
+  { label: 'Beard Transplant', href: '/tools/hair-transplant/beard' },
+  { label: 'Eyebrow Transplant', href: '/tools/hair-transplant/eyebrow' }
 ];
 
 const hairTransplantTools = [
-  { label: 'Graft Calculator', href: '/tools/graft-calculator' },
-  { label: 'Norwood Scale Tool', href: '/tools/norwood-scale' },
-  { label: 'Hair Density Estimator', href: '/tools/hair-density' },
-  { label: 'Price Estimator', href: '/tools/price-estimator' },
-  { label: 'Hair Loss Quiz', href: '/tools/hair-loss-quiz' },
-  { label: 'Recovery Timeline', href: '/tools/recovery-timeline' },
-  { label: 'Beard Graft Calculator', href: '/tools/beard-calculator' },
-  { label: 'Eyebrow Graft Calculator', href: '/tools/eyebrow-calculator' },
-  { label: 'Travel & Budget Planner', href: '/tools/budget-planner' }
+  { label: 'Hub: All Sections', href: '/tools' },
+  { label: 'Patient Reviews', href: '/tools/patient-reviews' },
+  { label: 'Hair Transplant Techniques', href: '/tools/hair-transplant' },
+  { label: 'Medical Blog', href: '/tools/blog' }
 ];
 
 const aestheticLinks = [
@@ -35,8 +30,8 @@ const aestheticLinks = [
 const companyLinks = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Services', href: '/services' },
-  { label: 'Reviews', href: '/review' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Reviews', href: '/tools/patient-reviews' },
+  { label: 'Blog', href: '/tools/blog' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact Us', href: '/contact-us' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
