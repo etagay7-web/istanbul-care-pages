@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import PageHero from '@/components/PageHero';
 
 type Category = 'Hair Transplant' | 'Aftercare' | 'Research' | 'Celebrities' | 'Cost & Pricing';
@@ -13,7 +13,6 @@ type Post = {
   date: string;
   readingTime: number;
   img: string;
-  excerpt?: string;
 };
 
 type Author = {
@@ -39,9 +38,7 @@ const mk = (title: string, category: Category, date: string, readingTime = 6): P
   category,
   date,
   readingTime,
-  img: `https://picsum.photos/seed/${slugify(title)}/800/520`,
-  excerpt:
-    'A clear, surgeon-reviewed read from the Istanbul Care editorial team — practical guidance you can trust.'
+  img: `https://picsum.photos/seed/${slugify(title)}/800/520`
 });
 
 const authors: Author[] = [
@@ -110,19 +107,6 @@ const authors: Author[] = [
   }
 ];
 
-const allPosts: (Post & { author: Author })[] = authors.flatMap((a) =>
-  a.posts.map((p) => ({ ...p, author: a }))
-);
-
-const categories: ('All' | Category)[] = [
-  'All',
-  'Hair Transplant',
-  'Aftercare',
-  'Research',
-  'Celebrities',
-  'Cost & Pricing'
-];
-
 const categoryStyle: Record<Category, string> = {
   'Hair Transplant': 'bg-primary text-white',
   Aftercare: 'bg-accent text-white',
@@ -147,13 +131,6 @@ const formatDate = (iso: string) =>
 
 export default function BlogPage() {
   const [openAuthor, setOpenAuthor] = useState<string | null>(authors[0].slug);
-  const [activeCategory, setActiveCategory] = useState<'All' | Category>('All');
-
-  const filteredPosts = useMemo(() => {
-    const sorted = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
-    if (activeCategory === 'All') return sorted;
-    return sorted.filter((p) => p.category === activeCategory);
-  }, [activeCategory]);
 
   return (
     <>
@@ -163,7 +140,6 @@ export default function BlogPage() {
         subtitle="In-depth guides, research and aftercare tips written by our medical team and contributing experts."
       />
 
-      {/* SECTION 2 — OUR AUTHORS (above articles) */}
       <section className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
         <div className="mb-10 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
@@ -174,7 +150,7 @@ export default function BlogPage() {
           </h2>
           <p className="mt-4 text-primary/75 leading-relaxed">
             Every article is written, reviewed or supervised by a member of our medical team. Tap an
-            author to see their work and areas of expertise.
+            author to see their work.
           </p>
         </div>
 
@@ -189,10 +165,11 @@ export default function BlogPage() {
                   aria-controls={`panel-${author.slug}`}
                   className={
                     'w-full rounded-2xl overflow-hidden bg-white border border-soft/40 grid grid-cols-1 md:grid-cols-[280px_1fr] text-left transition-all ' +
-                    (isOpen ? 'shadow-xl border-secondary' : 'shadow-sm hover:shadow-lg hover:border-secondary/60')
+                    (isOpen
+                      ? 'shadow-xl border-secondary'
+                      : 'shadow-sm hover:shadow-lg hover:border-secondary/60')
                   }
                 >
-                  {/* Left: gradient panel with initial + name */}
                   <div
                     className={
                       'relative px-6 py-8 md:py-10 text-white flex flex-col items-center justify-center text-center ' +
@@ -211,7 +188,6 @@ export default function BlogPage() {
                     </p>
                   </div>
 
-                  {/* Right: bio + tags + meta */}
                   <div className="p-6 md:p-8 flex flex-col">
                     <div className="flex items-start justify-between gap-4">
                       <p className="text-sm md:text-base font-semibold text-secondary">
@@ -246,148 +222,60 @@ export default function BlogPage() {
                         (isOpen ? 'text-accent-strong' : 'text-primary/60')
                       }
                     >
-                      {isOpen ? 'Hide articles ↑' : 'View articles ↓'}
+                      {isOpen ? 'Hide Articles ↑' : 'View Articles ↓'}
                     </span>
                   </div>
                 </button>
 
-                {/* Expanded panel */}
                 {isOpen ? (
                   <div
                     id={`panel-${author.slug}`}
-                    className="mt-4 rounded-2xl bg-white border border-soft/40 shadow-sm overflow-hidden"
+                    className="mt-4 rounded-2xl bg-white border border-soft/40 shadow-sm p-5 md:p-8"
                   >
-                    <ul className="px-2 md:px-4 py-6">
+                    <div className="grid gap-6 md:grid-cols-2">
                       {author.posts.map((post) => (
-                        <li key={post.slug}>
-                          <Link
-                            href={`/tools/blog/${post.slug}`}
-                            className="group block rounded-xl px-4 md:px-6 py-4 hover:bg-primary/5 transition-colors"
-                          >
-                            <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
-                              <span
-                                className={
-                                  'inline-flex w-fit rounded-full text-[10px] uppercase tracking-wider font-semibold px-3 py-1 ' +
-                                  categoryStyle[post.category]
-                                }
-                              >
-                                {post.category}
-                              </span>
-                              <h5 className="flex-1 text-base md:text-lg font-semibold text-primary group-hover:text-secondary leading-snug">
-                                {post.title}
-                              </h5>
-                              <div className="flex items-center gap-3 text-xs text-primary/60 whitespace-nowrap">
-                                <time>{formatDate(post.date)}</time>
-                                <span className="h-1 w-1 rounded-full bg-soft" />
-                                <span>{post.readingTime} min</span>
-                                <span className="hidden md:inline text-sm font-semibold text-accent-strong group-hover:text-accent ml-2">
-                                  Read article →
-                                </span>
-                              </div>
+                        <Link
+                          key={post.slug}
+                          href={`/tools/blog/${post.slug}`}
+                          className="group rounded-2xl overflow-hidden bg-white border border-soft/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
+                        >
+                          <div className="relative aspect-[16/10] overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={post.img}
+                              alt={post.title}
+                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <span
+                              className={
+                                'absolute top-3 left-3 rounded-full text-[10px] font-semibold uppercase tracking-wider px-3 py-1 ' +
+                                categoryStyle[post.category]
+                              }
+                            >
+                              {post.category}
+                            </span>
+                          </div>
+                          <div className="p-5">
+                            <div className="flex items-center gap-3 text-xs text-primary/60">
+                              <time>{formatDate(post.date)}</time>
+                              <span className="h-1 w-1 rounded-full bg-soft" />
+                              <span>{post.readingTime} min read</span>
                             </div>
-                          </Link>
-                        </li>
+                            <h4 className="mt-3 text-base md:text-lg font-semibold text-primary group-hover:text-secondary leading-snug">
+                              {post.title}
+                            </h4>
+                            <span className="mt-4 inline-flex items-center text-sm font-semibold text-accent-strong group-hover:text-accent">
+                              Read article →
+                            </span>
+                          </div>
+                        </Link>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ) : null}
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* SECTION 3 — ALL ARTICLES */}
-      <section className="bg-primary/5 border-t border-soft/40">
-        <div className="max-w-8xl mx-auto px-4 lg:px-12 py-16">
-          <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-                All articles
-              </span>
-              <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary leading-tight">
-                Latest from the blog
-              </h2>
-            </div>
-            <span className="text-sm font-semibold text-primary/70">
-              {filteredPosts.length} article{filteredPosts.length === 1 ? '' : 's'}
-              {activeCategory !== 'All' ? ` in ${activeCategory}` : ''}
-            </span>
-          </div>
-
-          <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map((c) => {
-              const active = c === activeCategory;
-              return (
-                <button
-                  key={c}
-                  onClick={() => setActiveCategory(c)}
-                  className={
-                    'rounded-full px-4 py-2 text-sm font-medium transition-colors ' +
-                    (active
-                      ? 'bg-primary text-white'
-                      : 'bg-white text-primary border border-soft/40 hover:bg-secondary hover:text-white hover:border-secondary')
-                  }
-                >
-                  {c}
-                </button>
-              );
-            })}
-          </div>
-
-          {filteredPosts.length === 0 ? (
-            <p className="rounded-2xl bg-white border border-soft/40 p-10 text-center text-primary/70">
-              No articles in this category yet — check back soon.
-            </p>
-          ) : (
-            <div className="grid gap-8 md:grid-cols-2">
-              {filteredPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/tools/blog/${post.slug}`}
-                  className="group rounded-2xl overflow-hidden bg-white border border-soft/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-secondary"
-                >
-                  <div className="grid sm:grid-cols-[200px_1fr]">
-                    <div className="relative aspect-[16/10] sm:aspect-auto sm:min-h-[180px] overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={post.img}
-                        alt={post.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <span
-                        className={
-                          'absolute top-3 left-3 rounded-full text-[10px] font-semibold uppercase tracking-wider px-3 py-1 ' +
-                          categoryStyle[post.category]
-                        }
-                      >
-                        {post.category}
-                      </span>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-3 text-xs text-primary/60">
-                        <time>{formatDate(post.date)}</time>
-                        <span className="h-1 w-1 rounded-full bg-soft" />
-                        <span>{post.readingTime} min read</span>
-                      </div>
-                      <h3 className="mt-3 text-lg font-semibold text-primary group-hover:text-secondary leading-snug">
-                        {post.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-primary/75 leading-relaxed line-clamp-2">
-                        {post.excerpt}
-                      </p>
-                      <div className="mt-4 flex items-center justify-between text-xs">
-                        <span className="text-primary/60">By {post.author.name}</span>
-                        <span className="text-sm font-semibold text-accent-strong group-hover:text-accent">
-                          Read article →
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
       </section>
     </>
