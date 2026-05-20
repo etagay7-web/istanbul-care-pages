@@ -1,11 +1,13 @@
 export default function PageHero({
   eyebrow,
   title,
-  subtitle
+  subtitle,
+  children
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <section className="brand-gradient text-white">
@@ -16,12 +18,15 @@ export default function PageHero({
             {eyebrow}
           </div>
         ) : null}
-        <h1 className="mt-5 text-3xl md:text-5xl font-bold leading-tight">{title}</h1>
+        <h1 className={(eyebrow ? 'mt-5 ' : '') + 'text-3xl md:text-5xl font-bold leading-tight'}>
+          {title}
+        </h1>
         {subtitle ? (
           <p className="mt-5 max-w-3xl mx-auto text-base md:text-lg text-white/85 leading-relaxed">
             {subtitle}
           </p>
         ) : null}
+        {children ? <div className="mt-8 flex flex-wrap justify-center gap-3">{children}</div> : null}
       </div>
     </section>
   );

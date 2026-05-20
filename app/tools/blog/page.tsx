@@ -135,10 +135,22 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="Istanbul Care Blog"
-        title="Hair, science and patient stories"
-        subtitle="In-depth guides, research and aftercare tips written by our medical team and contributing experts."
-      />
+        title="Expert Guides on Hair Transplant, Recovery & Results"
+        subtitle="Our surgeons and medical specialists share honest, in-depth articles on DHI, FUE, aftercare, costs and real patient stories — everything you need to make a confident decision."
+      >
+        <a
+          href="#authors"
+          className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-strong transition-colors"
+        >
+          Browse by Author ↓
+        </a>
+        <a
+          href="#authors"
+          className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 backdrop-blur px-6 py-3 text-sm font-semibold text-white hover:bg-white/15 hover:border-white transition-colors"
+        >
+          View All Articles ↓
+        </a>
+      </PageHero>
 
       {/* SECTION 2 — Intro */}
       <section className="bg-white">
@@ -175,7 +187,7 @@ export default function BlogPage() {
       </section>
 
       {/* SECTION 3 — Our Authors */}
-      <section className="max-w-8xl mx-auto px-4 lg:px-12 pb-16">
+      <section id="authors" className="max-w-8xl mx-auto px-4 lg:px-12 pb-16 scroll-mt-24">
         <div className="mb-10 max-w-3xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
             Editorial team
