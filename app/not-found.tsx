@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div
-      className="fixed inset-0 z-50 overflow-auto flex items-center justify-center px-4 py-12"
+    <section
+      className="min-h-[calc(100vh-90px)] flex items-center justify-center px-4 py-16 md:py-24"
       style={{
         backgroundImage:
           'linear-gradient(to bottom, #e6f0f6 0%, #f5fafd 45%, #ffffff 100%)'
@@ -29,8 +29,8 @@ export default function NotFound() {
         </h2>
 
         <p className="mt-5 max-w-2xl mx-auto text-base md:text-lg text-primary/75 leading-relaxed">
-          The page you&apos;re looking for has moved, been removed, or never existed. Let&apos;s get
-          you back on track — our team is here to help.
+          The page you&apos;re looking for has moved, been removed, or never existed. Let&apos;s
+          get you back on track — our team is here to help.
         </p>
 
         {/* Primary action row */}
@@ -83,6 +83,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
